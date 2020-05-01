@@ -14,7 +14,7 @@ return (
     <div style={styles.box}>
 <h1>Company</h1>
 
-<Form fluid onSubmit={(ev) => handleSubmit(ev,args)} >
+<Form fluid onSubmit={(ev) => handleSubmit(ev,args) } >
 
   <Form.Input name='email' label='Company Email' placeholder='Ingresa Email'  onChange={handleChange} />
   <Form.Input name='password' label='Password' type='password' placeholder='Ingresa Password' onChange={handleChange} />

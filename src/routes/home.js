@@ -4,6 +4,8 @@ import { gql } from 'apollo-boost';
 import ToolBar from '../components/register/ToolbarRegister';
 
 
+
+
 const EXCHANGE_RATES = gql`
 {
   allCompanys{
@@ -14,6 +16,10 @@ const EXCHANGE_RATES = gql`
 }
 `;
 
+
+  
+  
+ 
 function ExchangeRates() {
   const { loading, error, data } = useQuery(EXCHANGE_RATES);
 
@@ -35,6 +41,7 @@ class RegisterComponent extends Component{
       <div>
     <h1>Hhhh</h1>
     <ToolBar/>
+    
       <ExchangeRates/>
       </div>
       );
