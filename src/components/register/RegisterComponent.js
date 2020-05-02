@@ -1,17 +1,13 @@
 import React, {Component} from 'react';
 import {Grid} from 'semantic-ui-react';
-//import { gql } from "apollo-boost";
-//import { useMutation } from '@apollo/react-hooks';
 
-/*
-const CREATE_COMPANY = gql`
-  mutation  CreateCompany( $email: String! , $password: String! , $name: String! , $city: String! , $address: String! , $phone : Integer! , $manager: String! ) {
-    createCompany( email:$email , password:$password , name:$name , city:$city , address:$address , phone:$phone , manager:$manager ) {
-      id
-    }
-  }
-  `;*/
+import { graphql } from 'react-apollo'
+import {flowRight as compose} from 'lodash';
 
+
+//Custom utils 
+import queries from '../utils/queries';
+   
 //Custom imports
 import ToolBar from '../register/ToolbarRegister';
 import RegisterCompany from '../register/registerForms/RegisterCompany';
@@ -33,15 +29,16 @@ const styles={
 
     }
 }
-  
+ 
+
 
 
 class RegisterComponent extends Component{
-
     state={
         showCompanyForm:true,
         showDriverForm:false,
     }
+   
 
     showDriverForm = (ev)=>{
         ev.preventDefault();
@@ -51,24 +48,37 @@ class RegisterComponent extends Component{
         ev.preventDefault();
         this.setState({showCompanyForm:true, showDriverForm:false});
     }
-    handleRegisterCompany = (ev,args)=>{
-        
-        
-       console.log(args);
-       /*
-       const createCompany = useMutation(CREATE_COMPANY);
-       const response =  createCompany({ variables: {args}});
-       console.log(response);
-*/
-    };
-    handleRegisterDriver = (ev,args)=>{
+
+    handleRegisterCompany = async  (ev,args)=>{
         ev.preventDefault();
         console.log(args);
+ const response = await this.props.createCompany({
+      variables:args
+    })
+    console.log(response);
+    alert(response);
+     };
+    
+   
+
+
+     
+    handleRegisterDriver = async (ev,args)=>{
+        ev.preventDefault();
+        console.log(args);
+    const response = await this.props.createDriver({
+          variables:args
+        })
+    console.log(response);
+    alert(response);
     }
 
     render(){
         const {showCompanyForm, showDriverForm} = this.state;
+       
+    
 
+        
         return(
             
             <Grid fluid columns={2} centered verticalAlign="middle" style={styles.grid}>
@@ -93,4 +103,7 @@ class RegisterComponent extends Component{
 
 
 
-export default RegisterComponent;
+export default compose(
+    graphql(queries.mutation.CREATE_COMPANY,{name:'createCompany'}),
+    graphql(queries.mutation.CREATE_DRIVER,{name:'createDriver'})
+)(RegisterComponent);
