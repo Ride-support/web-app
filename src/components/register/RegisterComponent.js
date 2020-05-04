@@ -52,12 +52,12 @@ class RegisterComponent extends Component{
     handleRegisterCompany = async  (ev,args)=>{
         ev.preventDefault();
         console.log(args);
- const response = await this.props.createCompany({
-      variables:args
-    })
-    console.log(response);
-    alert(response);
-     };
+        const response = await this.props.createCompany({
+            variables:args
+        })
+        console.log(response);
+        alert(response);
+    };
     
    
 

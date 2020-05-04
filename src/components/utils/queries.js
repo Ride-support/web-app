@@ -37,8 +37,27 @@ export default{
         id
       }
     }
-    `
+    `,
+    LOGIN_DRIVER : gql`
+  	mutation loginDriver($email : String! , $password: String!){
+	  	loginDriver( driver : {
+        email:$email,
+        password:$password
+      })
+	  }
+    `,
 
+    LOGIN_COMPANY : gql`
+    mutation loginCompany($email : String! , $password: String!){
+      loginCompany( company : {
+        email:$email,
+        password:$password
+      })
+    }
+    `
+  
 
     },
+
+
 }

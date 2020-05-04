@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Routes from './routes'; 
 import * as serviceWorker from './serviceWorker';
+import 'bootstrap/dist/css/bootstrap.min.css'; // importing bootstrap
 
 import { ApolloProvider } from '@apollo/react-hooks';
 import { gql } from "apollo-boost";
