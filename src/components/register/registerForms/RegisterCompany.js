@@ -2,7 +2,7 @@ import React from 'react';
 import { Divider, Form , Button } from 'semantic-ui-react';
 
 
-export default({styles, handleClick, handleSubmit}) =>{
+export default({handleSubmit}) =>{
 
 
 const args = {};
@@ -13,7 +13,7 @@ const handleChange = (ev,input)=>{
 
 return (
 <div>
-    <div style={styles.box}>
+    <div >
 <h1>Company</h1>
 
 <Form fluid onSubmit={(ev) => handleSubmit(ev,args)} >
@@ -40,9 +40,7 @@ asdasdas
 
 
 
-    <div style={styles.box}>
-¿Eres un Conductor? <a href="" onClick={handleClick}>Registrarse como Conductor</a>
-    </div>
+    
 </div>
 
 )

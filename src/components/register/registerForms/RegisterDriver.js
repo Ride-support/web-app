@@ -1,7 +1,7 @@
 import React from 'react';
 import { Divider, Form , Button } from 'semantic-ui-react';
 
-export default({styles, handleClick, handleSubmit}) =>{
+export default({ handleSubmit}) =>{
 
     const args = {};
 
@@ -11,7 +11,7 @@ export default({styles, handleClick, handleSubmit}) =>{
 
     return (
     <div>
-        <div style={styles.box}>
+        <div >
             <h1>Driver</h1>
 
             <Form fluid onSubmit={(ev) => handleSubmit(ev,args)} >
@@ -28,10 +28,6 @@ export default({styles, handleClick, handleSubmit}) =>{
             </Form>
             <Divider horizontal > 0</Divider>
             asdasdas
-        </div>
-
-        <div style={styles.box}>
-            ¿Eres un Conductor? <a href="" onClick={handleClick}>Registrarse como Conductor</a>
         </div>
     </div>
 

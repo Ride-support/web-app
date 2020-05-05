@@ -1,10 +1,10 @@
 import React ,{Component} from 'react';
 import { useQuery } from '@apollo/react-hooks';
 import { gql } from 'apollo-boost';
-import ToolBar from '../components/register/ToolbarRegister';
-import LoginComponent from '../components/login/LoginComponent'
-import Map from '../components/Map'
-import credential from '../credentials'
+import RegisterComponent from '../components/register/RegisterComponent';
+import LoginComponent from '../components/login/LoginComponent';
+import Map from '../components/Map';
+import credential from '../credentials';
 
 const mapURL = `https://maps.googleapis.com/maps/api/js?v_3.exp&key=${credential.mapsKey}`;
 
@@ -32,13 +32,13 @@ function ExchangeRates() {
     </div>
   ));
 }
-class RegisterComponent extends Component{
+class HomeComponent extends Component{
 
   render(){
     return(
       <div>
         <LoginComponent/>
-        <ToolBar/>
+        <RegisterComponent/>
         <Map
           googleMapURL = {mapURL}
           containerElement = {<div style = {{height: '800px'}} />}
@@ -52,7 +52,7 @@ class RegisterComponent extends Component{
 }
 
 
-export default RegisterComponent;
+export default HomeComponent;
 /*
 
 */
