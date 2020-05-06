@@ -10,8 +10,8 @@ import 'semantic-ui-css/semantic.min.css';
 import '../css/main.css';
 
 import Home from './home';
-//import RegisterComponent from '../components/register/RegisterComponent';
-//<Route path="/register" exact component={RegisterComponent}>*/
+import ReservasComponent from '../components/reservas/ReservasComponent';
+//*/
 //import { render } from 'react-dom';
 
 
@@ -21,6 +21,7 @@ export default ()=>(
 <Router>
     <Switch>
     <Route path="/" exact component={Home}/>
+    <Route path="/reservas" exact component={ReservasComponent}></Route>
     
     </Switch>
 </Router>

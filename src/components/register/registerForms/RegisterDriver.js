@@ -27,6 +27,7 @@ export default({ handleSubmit}) =>{
                 <Button type='submit' primary fluid >Registrarte como Conductor</Button>
             </Form>
             <Divider horizontal > 0</Divider>
+            
             asdasdas
         </div>
     </div>
