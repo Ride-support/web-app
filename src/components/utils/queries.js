@@ -2,6 +2,24 @@ import { gql } from "apollo-boost";
 
 export default{
     query:{
+      GET_ALL_COMPANYS : gql`
+      {
+        allCompanys{
+          id,
+          email,
+          password
+        }
+      }
+      `,
+      GET_ALL_DRIVERS : gql`
+      {
+        allDrivers{
+          id,
+          email,
+          password
+        }
+      }
+      `,
 
     },
     mutation:{
@@ -54,7 +72,22 @@ export default{
         password:$password
       })
     }
-    `
+    `,
+    CREATE_RESERVAS:gql`
+    mutation createReserva($tipoServicio: String!,$fechaServicio: String! ,$horaServicio:String!,$lugarServicio:String!){
+      createReserva(id:"5eb20691c88543c61655446e",reserva: {
+        tipoServicio:$tipoServicio
+        fechaServicio:$fechaServicio
+        horaServicio:$horaServicio
+        lugarServicio:$lugarServicio
+      }) {
+        tipoServicio
+        fechaServicio
+        horaServicio
+        lugarServicio
+      }
+    }
+    `,
   
 
     },

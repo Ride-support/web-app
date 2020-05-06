@@ -22,7 +22,7 @@ class RegisterComponent extends Component{
 	constructor(props) {
 		super(props);
 		this.toggleModal = this.toggleModal.bind(this);
-		this.handleRegisterCompany = this.handleRegisterDriver.bind(this);
+		
 
 		this.state = {
 			isNavOpen: false,
@@ -46,8 +46,8 @@ class RegisterComponent extends Component{
         })
         console.log(response);
         
-        alert(JSON.stringify(response.data.createCompany));
-        
+       // alert(JSON.stringify(response.data.createCompany));
+       window.location.reload();
     };
     
    
@@ -61,7 +61,8 @@ class RegisterComponent extends Component{
           variables:args
         })
         console.log(response);
-        alert(JSON.stringify(response.data.createDriver));
+		//alert(JSON.stringify(response.data.createDriver));
+		window.location.reload();
     }
 
     render(){
