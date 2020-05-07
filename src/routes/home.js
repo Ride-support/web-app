@@ -12,7 +12,7 @@ const mapURL = `https://maps.googleapis.com/maps/api/js?v_3.exp&key=${credential
 
 
 
-
+/*
 function ShowCompany() {
   const { loading, error, data } = useQuery(queries.query.GET_ALL_COMPANYS);
 
@@ -55,7 +55,11 @@ function ShowCoordinates() {
     </div>
   ));
 }
+        <ShowCompany/>
+        <ShowDriver/>
+        <ShowCoordinates/>
 
+*/
 class HomeComponent extends Component{
 
   render(){
@@ -70,9 +74,7 @@ class HomeComponent extends Component{
           mapElement = {<div style = {{height: '100%'}} />}
           loadingElement = {<p>Cargando</p>}
         />
-        <ShowCompany/>
-        <ShowDriver/>
-        <ShowCoordinates/>
+        
       </div>
     );
   }

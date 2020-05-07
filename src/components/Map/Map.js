@@ -24,7 +24,7 @@ function ShowCoordinates() {
             }}
             icon={{
                 url: 'https://cdn1.iconfinder.com/data/icons/cars-application-manager/512/car-map-marker-parking-4-512.png',
-                scaledSize: new window.google.maps.Size(74,74)
+                scaledSize: new window.google.maps.Size(64,64)
 
             }}
         />
