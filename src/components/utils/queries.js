@@ -20,6 +20,15 @@ export default{
         }
       }
       `,
+      GET_ALL_COORDINATES : gql`
+      {
+        allCoordinates{
+          _id,
+          latitude,
+          longitude
+        }
+      }
+      `,
 
     },
     mutation:{

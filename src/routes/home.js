@@ -3,7 +3,7 @@ import { useQuery } from '@apollo/react-hooks';
 
 import RegisterComponent from '../components/register/RegisterComponent';
 import LoginComponent from '../components/login/LoginComponent';
-import Map from '../components/Map';
+import Map from '../components/Map/Map';
 import credential from '../credentials';
 import queries from '../components/utils/queries';
 
@@ -41,21 +41,37 @@ function ShowDriver() {
     </div>
   ));
 }
+function ShowCoordinates() {
+  const { loading, error, data } = useQuery(queries.query.GET_ALL_COORDINATES);
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error :(</p>;
+
+  return data.allCoordinates.map(({_id,latitude, longitude }) => (
+    <div key={_id}>
+      <p>
+        {latitude}: {longitude}
+      </p>
+    </div>
+  ));
+}
+
 class HomeComponent extends Component{
 
   render(){
     return(
-      <div>
+      <div style ={{width:"100vw", height:"100vh"}}>
         <LoginComponent/>
         <RegisterComponent/>
         <Map
           googleMapURL = {mapURL}
-          containerElement = {<div style = {{height: '800px'}} />}
+          containerElement = {<div style = {{height: '95%'}} />}
           mapElement = {<div style = {{height: '100%'}} />}
           loadingElement = {<p>Cargando</p>}
         />
         <ShowCompany/>
         <ShowDriver/>
+        <ShowCoordinates/>
       </div>
     );
   }
