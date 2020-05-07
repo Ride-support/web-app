@@ -66,10 +66,13 @@ class HomeComponent extends Component{
   render(){
     return(
       <div style ={{width:"100vw", height:"100vh"}}>
-        <ServiceComponent/>
-        <LoginComponent/>
-        <RegisterComponent/>
-        <ReservasComponent/>
+          <div className="row d-flex justify-content-end">
+              <ServiceComponent/>
+              <ReservasComponent/>
+              <LoginComponent/>
+              <RegisterComponent/>
+          </div>
+
         <Map
           googleMapURL = {mapURL}
           containerElement = {<div style = {{height: '95%'}} />}
