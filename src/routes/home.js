@@ -1,6 +1,6 @@
 import React ,{Component} from 'react';
 import { useQuery } from '@apollo/react-hooks';
-
+import ReservasComponent from '../components/reservas/ReservasComponent'
 import RegisterComponent from '../components/register/RegisterComponent';
 import LoginComponent from '../components/login/LoginComponent';
 import Map from '../components/Map/Map';
@@ -63,6 +63,7 @@ class HomeComponent extends Component{
       <div style ={{width:"100vw", height:"100vh"}}>
         <LoginComponent/>
         <RegisterComponent/>
+        <ReservasComponent/>
         <Map
           googleMapURL = {mapURL}
           containerElement = {<div style = {{height: '95%'}} />}

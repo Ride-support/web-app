@@ -28,7 +28,6 @@ export default({ handleSubmit}) =>{
             </Form>
             <Divider horizontal > 0</Divider>
             
-            asdasdas
         </div>
     </div>
 

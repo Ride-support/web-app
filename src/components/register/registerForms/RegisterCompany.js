@@ -33,7 +33,7 @@ fluid
 >Registrar Empresa</Button>
 </Form>
 <Divider horizontal > 0</Divider>
-asdasdas
+
     </div>
 
 

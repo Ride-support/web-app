@@ -1,7 +1,7 @@
 
 import React, {Component} from 'react';
-import {Grid} from 'semantic-ui-react';
-
+import { Button, Modal, ModalHeader, ModalBody, } from 'reactstrap';
+import { Tabs } from "@yazanaabed/react-tabs";
 import { graphql } from 'react-apollo'
 import {flowRight as compose} from 'lodash';
 
@@ -12,40 +12,27 @@ import FormReservas from './reservasForm/FormReservas';
 import ShowReservas from './reservasShow/ShowReservas';
 
 //Constantes
-const styles={
-    grid:{
-        height:'100%',
-        width:'900px',
-        margin:'0 auto',
-    },
-    box:{
-        background:'white',
-        border:'1px solid #e6e6e6',
-        textAlign:'center',
-        marginBottom:'1em',
-        padding:'1em',
 
-    }
-}
 
 class ReservasComponent extends Component {
 
-    state={
-        showAllReservas:true,
-        showFormReserva:false,
-    }
-   
+    constructor(props) {
+		super(props);
+		this.toggleModal = this.toggleModal.bind(this);
 
-    showAllReservas = (ev)=>{
-        ev.preventDefault();
-        this.setState({showFormReserva:false, showAllReservas:true});
-        
-    }
-    showFormReserva = (ev)=>{
-        ev.preventDefault();
-        this.setState({showFormReserva:true, showAllReservas:false});
-        
-    }
+
+		this.state = {
+			isNavOpen: false,
+			isModalOpen: false
+		};
+	}
+
+	toggleModal() {
+		this.setState({
+			isModalOpen: !this.state.isModalOpen
+		})
+	}
+
 
     handleRegisterReserva = async  (ev,args)=>{
         ev.preventDefault();
@@ -59,25 +46,38 @@ class ReservasComponent extends Component {
         window.location.reload();
     };
     render(){
-        const {showFormReserva, showAllReservas} = this.state;
+        
        
     
 
         
         return(
+            <div >
+				<Button outline onClick={this.toggleModal}><span>Reservas</span></Button>
+				<Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal} >
+					<ModalHeader toggle={this.toggleModal}>Reservas</ModalHeader>
+					<ModalBody>
+						<Tabs
+							activeTab={{
+								id: "tab1"
+							}}
+							>
+							<Tabs.Tab id="tab1" title="Ver reserva">
+								<div style={{ padding: 10 }}>
+                                <ShowReservas  />
+								</div>
+							</Tabs.Tab>
+							<Tabs.Tab id="tab2" title="Hacer Reserva">
+								<div style={{ padding: 10 }}>
+                                <FormReservas  handleSubmit={this.handleRegisterReserva} />
+								</div>
+							</Tabs.Tab>
+						</Tabs>
+					</ModalBody>
+				</Modal>
+			</div>
             
-            <Grid fluid columns={2} centered verticalAlign="middle" style={styles.grid}>
-                <Grid.Row fluid>
-                    <Grid.Column>
-                
-                <img src="images/logo_rideSupport.png" alt="logo" fluid></img>
-                    </Grid.Column>
-                    <Grid.Column>
-                    {showAllReservas  && <ShowReservas handleClick={this.showFormReserva} />}
-                    {showFormReserva && <FormReservas styles={styles} handleClick={this.showAllReservas} handleSubmit={this.handleRegisterReserva} />}
-                    </Grid.Column>
-                </Grid.Row>
-            </Grid>
+           
         
         )
     }

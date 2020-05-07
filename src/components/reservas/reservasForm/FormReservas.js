@@ -1,7 +1,7 @@
 import React from 'react';
 import { Divider, Form , Button } from 'semantic-ui-react';
 
-export default({styles, handleClick, handleSubmit}) =>{
+export default({ handleSubmit}) =>{
 
     const args = {};
 
@@ -12,7 +12,7 @@ export default({styles, handleClick, handleSubmit}) =>{
       
     return (
     <div>
-        <div style={styles.box}>
+        <div >
             <h1>Realiza una Reserva</h1>
 
             <Form fluid onSubmit={(ev) => handleSubmit(ev,args)} >
@@ -22,10 +22,10 @@ export default({styles, handleClick, handleSubmit}) =>{
                 <Form.Input name='horaServicio' label='horaServicio' placeholder='Ingresa horaServicio' onChange={handleChange} />
                 <Form.Input name='lugarServicio' label='lugarServicio' placeholder='Ingresa lugarServicio' onChange={handleChange} />
 
-                <Button type='submit' primary fluid >Registrarte como Conductor</Button>
+                <Button type='submit' primary fluid >Realizar Reserva</Button>
             </Form>
             <Divider horizontal > 0</Divider>
-            <button onClick={handleClick}>Ver Reservas Actuales</button>
+            
         </div>
     </div>
 

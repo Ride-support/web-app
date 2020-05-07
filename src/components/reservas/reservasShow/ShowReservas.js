@@ -29,13 +29,13 @@ function ExchangeRates() {
         <td>{tipoServicio}</td>
         <td>{fechaServicio}</td>
         <td>{horaServicio}</td>
-        <td><button value={id} >Eliminar</button></td>
+       
         
     </tr>
       
     ));
   }
-  export default({handleClick})=>{
+  export default()=>{
 return(
     <div>
 <h1>Reservas Actuales</h1>
@@ -46,7 +46,7 @@ return(
           <th>tipoServicio</th>
           <th>fechaServicio</th>
           <th>horaServicio</th>
-          <th>Eliminar</th>
+          
           </tr>
           <ExchangeRates />
           
@@ -54,8 +54,6 @@ return(
 
     </table>
 
-    ¿Quieres hacer una nueva reserva? 
-    <button onClick={handleClick}>Realizar nueva Reserva</button>
     
     </div>
     )
