@@ -75,7 +75,7 @@ class HomeComponent extends Component{
 
         <Map
           googleMapURL = {mapURL}
-          containerElement = {<div style = {{height: '95%'}} />}
+          containerElement = {<div style = {{height: '97%'}} />}
           mapElement = {<div style = {{height: '100%'}} />}
           loadingElement = {<p>Cargando</p>}
         />
