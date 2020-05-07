@@ -67,6 +67,8 @@ function GetAllServices() {
                             <button type="submit" className=" btn btn-block p-2 btn-info" onClick={e => {
                                 if (window.confirm("¿Eliminar servicio?")){
                                     deleteService({ variables: { id: Idcompany } });
+                                    window.alert("Servicio eliminado");
+                                    window.location.reload()
                                 }else{
                                     window.alert("Servicio no eliminado");
                                 }
