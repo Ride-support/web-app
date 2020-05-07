@@ -6,6 +6,7 @@ import LoginComponent from '../components/login/LoginComponent';
 import Map from '../components/Map';
 import credential from '../credentials';
 import queries from '../components/utils/queries';
+import ServiceComponent from "../components/services/serviceComponent";
 
 const mapURL = `https://maps.googleapis.com/maps/api/js?v_3.exp&key=${credential.mapsKey}`;
 
@@ -46,6 +47,7 @@ class HomeComponent extends Component{
   render(){
     return(
       <div>
+          <ServiceComponent/>
         <LoginComponent/>
         <RegisterComponent/>
         <ReservasComponent/>
