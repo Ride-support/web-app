@@ -66,7 +66,7 @@ class HomeComponent extends Component{
   render(){
     return(
       <div style ={{width:"100vw", height:"100vh"}}>
-          <div className="row d-flex justify-content-end">
+          <div className="row justify-content-end bg-dark mr-3">
               <ServiceComponent/>
               <ReservasComponent/>
               <LoginComponent/>
