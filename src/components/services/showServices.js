@@ -22,12 +22,12 @@ function GetAllServices() {
     if (error) return <p>Error :(</p>;
 
     return data.allServicesM.map(({Idcompany,Service,Name,Location,Prices,Shedule}) => (
-        <div className="col-md-3" key={Idcompany}>
+        <div className="col-md-6 mb-2" key={Idcompany}>
             <div className="card ">
                 <div className="card-header ">
                     <div className="row justify-content-center">
                         <h4 className="text-info font-weight-bold"> Service: </h4>
-                        <h4> {Service}</h4>
+                        <h4 className="text-center"> {Service}</h4>
                     </div>
                 </div>
                 <div className="card-body " >
@@ -66,7 +66,7 @@ function GetAllServices() {
 
 
 
-class showServicesComponent extends Component{
+class ShowServicesComponent extends Component{
 
     constructor() {
         super();
@@ -84,4 +84,4 @@ class showServicesComponent extends Component{
     }
 }
 
-export default showServicesComponent;
+export default ShowServicesComponent;

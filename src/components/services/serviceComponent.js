@@ -5,25 +5,35 @@ import { graphql } from 'react-apollo'
 import {flowRight as compose} from 'lodash';
 import serviceQueries from './serviceQueries';
 import ServiceForm from "./serviceForm";
+import ShowServicesComponent from "./showServices";
 
 class ServiceComponent extends Component{
 
     constructor(props) {
         super(props);
-        this.toggleModal = this.toggleModal.bind(this);
+        this.toggleModalAddService = this.toggleModalAddService.bind(this);
+        this.toggleModalShowServices = this.toggleModalShowServices.bind(this);
 
         this.state = {
-            isNavOpen: false,
-            isModalOpen: false
+            isModalAddServiceOpened: false,
+            isModalShowServicesOpened: false
+
         };
     }
 
-    toggleModal() {
+    toggleModalAddService() {
         this.setState({
-            isModalOpen: !this.state.isModalOpen
+            isModalAddServiceOpened: !this.state.isModalAddServiceOpened,
+            isModalShowServicesOpened: this.state.isModalShowServicesOpened
         })
     }
 
+    toggleModalShowServices() {
+        this.setState({
+            isModalAddServiceOpened: this.state.isModalAddServiceOpened,
+            isModalShowServicesOpened: !this.state.isModalShowServicesOpened
+        })
+    }
 
 
     handlerAddService = async  (ev,args)=>{
@@ -47,11 +57,19 @@ class ServiceComponent extends Component{
 
         return(
             <div>
-                <Button outline onClick={this.toggleModal}><span>Add Service</span></Button>
-                <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal} >
-                    <ModalHeader toggle={this.toggleModal} className="text-danger font-weight-bold justify-content-center">Add Service</ModalHeader>
+                <Button outline onClick={this.toggleModalAddService}><span>Add Service</span></Button>
+                <Modal isOpen={this.state.isModalAddServiceOpened} toggle={this.toggleModalAddService} >
+                    <ModalHeader toggle={this.toggleModalAddService} className="text-danger font-weight-bold justify-content-center">Add Service</ModalHeader>
                     <ModalBody>
                         <ServiceForm handleSubmit={this.handlerAddService}/>
+                    </ModalBody>
+                </Modal>
+
+                <Button outline onClick={this.toggleModalShowServices}><span>Show Services</span></Button>
+                <Modal isOpen={this.state.isModalShowServicesOpened} toggle={this.toggleModalShowServices} >
+                    <ModalHeader toggle={this.toggleModalShowServices} className="text-danger font-weight-bold justify-content-center">Show Services</ModalHeader>
+                    <ModalBody>
+                        <ShowServicesComponent/>
                     </ModalBody>
                 </Modal>
             </div>
