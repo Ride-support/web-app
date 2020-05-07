@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import { useQuery } from '@apollo/react-hooks';
 import { gql } from 'apollo-boost';
+import { useMutation } from '@apollo/react-hooks';
 
 const ALL_SERVICES = gql`
     {
@@ -15,11 +16,20 @@ const ALL_SERVICES = gql`
     }
 `;
 
+const DELETE_SERVICE = gql`
+    mutation DeleteService($id: Int!){
+        deleteServiceM(id : $id)
+    }
+`;
+
 function GetAllServices() {
+    const [deleteService, { datos }] = useMutation(DELETE_SERVICE);
     const { loading, error, data } = useQuery(ALL_SERVICES);
 
     if (loading) return <p>Loading...</p>;
     if (error) return <p>Error :(</p>;
+
+
 
     return data.allServicesM.map(({Idcompany,Service,Name,Location,Prices,Shedule}) => (
         <div className="col-md-6 mb-2" key={Idcompany}>
@@ -54,7 +64,14 @@ function GetAllServices() {
                                 <b>Editar</b></button>
                         </div>
                         <div className="col-md-6">
-                            <button type="submit" className=" btn btn-block p-2 btn-info">
+                            <button type="submit" className=" btn btn-block p-2 btn-info" onClick={e => {
+                                if (window.confirm("¿Eliminar servicio?")){
+                                    deleteService({ variables: { id: Idcompany } });
+                                }else{
+                                    window.alert("Servicio no eliminado");
+                                }
+                            }
+                            }>
                                 <b>Eliminar</b></button>
                         </div>
                     </div>
@@ -68,8 +85,9 @@ function GetAllServices() {
 
 class ShowServicesComponent extends Component{
 
-    constructor() {
-        super();
+
+    constructor(props) {
+        super(props);
     }
 
     render() {
