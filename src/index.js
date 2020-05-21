@@ -13,7 +13,7 @@ const client = new ApolloClient({
 });
 
 
-client
+/*client
   .query({
     query: gql`
     {
@@ -26,7 +26,7 @@ client
      
     `
   })
-  .then(result => console.log(result));
+  .then(result => console.log(result));*/
 
 
 
