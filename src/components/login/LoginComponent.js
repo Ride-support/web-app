@@ -37,6 +37,8 @@ class LoginForm extends Component {
             variables:args
         })
         console.log(response);
+        const token = response.data.loginDriver.token;
+        localStorage.setItem('driverToken',token);
         alert(JSON.stringify(response.data.loginDriver));
     };
 
@@ -48,6 +50,8 @@ class LoginForm extends Component {
             variables:args
         })
         console.log(response);
+		const token = response.data.loginCompany.token;
+		localStorage.setItem('companyToken',token);
         alert(JSON.stringify(response.data.loginCompany));
     };
 
@@ -63,12 +67,12 @@ class LoginForm extends Component {
 								id: "tab1"
 							}}
 							>
-							<Tabs.Tab id="tab1" title="Conductor">
+							<Tabs.Tab id="tab1" title="Driver">
 								<div style={{ padding: 10 }}>
 									<LoginDriver handleSubmit={this.handleSubmitDriver}/>
 								</div>
 							</Tabs.Tab>
-							<Tabs.Tab id="tab2" title="Compañía">
+							<Tabs.Tab id="tab2" title="Company">
 								<div style={{ padding: 10 }}>
 									<LoginCompany handleSubmit={this.handleSubmitCompany}/>
 								</div>

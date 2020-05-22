@@ -44,7 +44,7 @@ export default{
         manager:$manager
       }) 
       {
-        id
+        token
       }
     }
     `,
@@ -61,7 +61,7 @@ export default{
         vehicle:$vehicle
       }) 
       {
-        id
+        token
       }
     }
     `,
@@ -70,7 +70,9 @@ export default{
 	  	loginDriver( driver : {
         email:$email,
         password:$password
-      })
+      }){
+            token
+        }
 	  }
     `,
 
@@ -79,7 +81,9 @@ export default{
       loginCompany( company : {
         email:$email,
         password:$password
-      })
+      }){
+          token
+      }
     }
     `,
     CREATE_RESERVAS:gql`

@@ -10,10 +10,8 @@ import 'semantic-ui-css/semantic.min.css';
 import '../css/main.css';
 
 import Home from './home';
-import HomeNavbarComponent from "../components/navbar/HomeNavbarComponent";
-import SimpleNavbarComponent from "../components/navbar/SimpleNavbarComponent";
-import CompanyNavbarComponent from "../components/navbar/CompanyNavbarComponent";
-import DriverNavbarComponent from "../components/navbar/DriverNavbarComponent";
+import 'semantic-ui-css/semantic.min.css'
+import NavbarComponent from "../components/navbar/NavbarComponent";
 //*/
 //import { render } from 'react-dom';
 
@@ -21,19 +19,14 @@ import DriverNavbarComponent from "../components/navbar/DriverNavbarComponent";
 
 
 export default ()=>(
-<Router>
-    <div className="row">
+<Router fluid>
+    <div className="row fixed-top">
         <div className="col-md-12 p-0">
-            <Switch className="justify-content-end bg-dark mr-3">
-                <Route path="/" exact component={HomeNavbarComponent}/>
-                <Route path="/companynavbar" exact component={CompanyNavbarComponent}/>
-                <Route path="/drivernavbar" exact component={DriverNavbarComponent}/>
-                <Route path="/simplenavbar" exact component={SimpleNavbarComponent}/>
-            </Switch>
+            <NavbarComponent/>
         </div>
 
     </div>
-    <div className="row">
+    <div className="container-fluid p-0 mt-5">
         <Switch>
             <Route path="/" exact component={Home}/>
         </Switch>

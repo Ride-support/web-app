@@ -15,9 +15,9 @@ export default({styles, handleSubmit}) =>{
 
             <Form fluid onSubmit={(ev) => handleSubmit(ev,args)} >
 
-                <Form.Input name='email' label='Email' placeholder='Ingresa Email'  onChange={handleChange} />
-                <Form.Input name='password' label='Password' type='password' placeholder='Ingresa Password' onChange={handleChange} />
-                <Button type='submit' primary fluid >Ingresar como conductor</Button>
+                <Form.Input name='email' label='Email' placeholder='Write driver email'  onChange={handleChange} />
+                <Form.Input name='password' label='Password' type='password' placeholder='Write driver password' onChange={handleChange} />
+                <Button type='submit' primary fluid >Sign in as Driver</Button>
             </Form>
         </div>
     </div>

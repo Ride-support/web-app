@@ -13,11 +13,6 @@ import queries from '../utils/queries';
 import RegisterCompany from '../register/registerForms/RegisterCompany';
 import RegisterDriver from '../register/registerForms/RegisterDriver';
 
-//Constantes
-
-
-
-
 class RegisterComponent extends Component{
 	constructor(props) {
 		super(props);
@@ -36,8 +31,6 @@ class RegisterComponent extends Component{
 		})
 	}
 
-    
-
     handleRegisterCompany = async  (ev,args)=>{
         ev.preventDefault();
         console.log(args);
@@ -49,15 +42,11 @@ class RegisterComponent extends Component{
        // alert(JSON.stringify(response.data.createCompany));
        window.location.reload();
     };
-    
-   
 
-
-     
     handleRegisterDriver = async (ev,args)=>{
         ev.preventDefault();
         console.log(args);
-    const response = await this.props.createDriver({
+    	const response = await this.props.createDriver({
           variables:args
         })
         console.log(response);
@@ -66,36 +55,32 @@ class RegisterComponent extends Component{
     }
 
     render(){
-        
-       
-    
 
-        
         return(
-            <div >
-				<Button outline onClick={this.toggleModal}><span>Register</span></Button>
-				<Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal} >
-					<ModalHeader toggle={this.toggleModal}>Register</ModalHeader>
-					<ModalBody>
-						<Tabs
-							activeTab={{
-								id: "tab1"
-							}}
-							>
-							<Tabs.Tab id="tab1" title="Company">
-								<div style={{ padding: 10 }}>
-									<RegisterCompany handleSubmit={this.handleRegisterCompany}/>
-								</div>
-							</Tabs.Tab>
-							<Tabs.Tab id="tab2" title="Driver">
-								<div style={{ padding: 10 }}>
-									<RegisterDriver handleSubmit={this.handleRegisterDriver}/>
-								</div>
-							</Tabs.Tab>
-						</Tabs>
-					</ModalBody>
-				</Modal>
+            <div className="row mt-5">
+				<div className="col-md-2"></div>
+				<div className="col-md-8 bg-light rounded-sm">
+					<Tabs
+						activeTab={{
+							id: "tab1"
+						}}
+					>
+						<Tabs.Tab id="tab1" title="Company" >
+							<div style={{ padding: 10 }}>
+								<RegisterCompany handleSubmit={this.handleRegisterCompany}/>
+							</div>
+						</Tabs.Tab>
+						<Tabs.Tab id="tab2" title="Driver">
+							<div style={{ padding: 10 }}>
+								<RegisterDriver handleSubmit={this.handleRegisterDriver}/>
+							</div>
+						</Tabs.Tab>
+					</Tabs>
+				</div>
+				<div className="col-md-2"></div>
 			</div>
+
+
         )
     }
 }

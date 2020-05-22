@@ -15,9 +15,9 @@ export default({styles, handleSubmit}) =>{
 
             <Form fluid onSubmit={(ev) => handleSubmit(ev,args)} >
 
-                <Form.Input name='email' label='Email' placeholder='Ingresa Email'  onChange={handleChange} />
-                <Form.Input name='password' label='Password' type='password' placeholder='Ingresa Password' onChange={handleChange} />
-                <Button type='submit' primary fluid >Ingresar como compañía</Button>
+                <Form.Input name='email' label='Email' placeholder='Write company Email'  onChange={handleChange} />
+                <Form.Input name='password' label='Password' type='password' placeholder='Ingresa company password' onChange={handleChange} />
+                <Button type='submit' primary fluid >Sign in as Company</Button>
             </Form>
         </div>
     </div>
