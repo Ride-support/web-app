@@ -17,7 +17,7 @@ export default({styles, handleSubmit}) =>{
 
                 <Form.Input name='email' label='Email' placeholder='Write company Email'  onChange={handleChange} />
                 <Form.Input name='password' label='Password' type='password' placeholder='Ingresa company password' onChange={handleChange} />
-                <Button type='submit' primary fluid >Sign in as Company</Button>
+                <Button className="bg-warning" type='submit' fluid >Sign in as Company</Button>
             </Form>
         </div>
     </div>

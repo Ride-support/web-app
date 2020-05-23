@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 
-import { Button, Modal, ModalHeader, ModalBody, } from 'reactstrap';
 import { graphql } from 'react-apollo'
 import {flowRight as compose} from 'lodash';
 import { Tabs } from "@yazanaabed/react-tabs";
@@ -17,7 +16,6 @@ class RegisterComponent extends Component{
 	constructor(props) {
 		super(props);
 		this.toggleModal = this.toggleModal.bind(this);
-		
 
 		this.state = {
 			isNavOpen: false,
@@ -39,8 +37,8 @@ class RegisterComponent extends Component{
         })
         console.log(response);
         
-       // alert(JSON.stringify(response.data.createCompany));
-       window.location.reload();
+        alert("Autenticado con Token: "+JSON.stringify(response.data.createCompany.token));
+		window.location.assign("/firstService");
     };
 
     handleRegisterDriver = async (ev,args)=>{
@@ -50,8 +48,8 @@ class RegisterComponent extends Component{
           variables:args
         })
         console.log(response);
-		//alert(JSON.stringify(response.data.createDriver));
-		window.location.reload();
+		alert("Autenticado con Token: "+JSON.stringify(response.data.createDriver.token));
+		window.location.assign("/firstVehicle");
     }
 
     render(){

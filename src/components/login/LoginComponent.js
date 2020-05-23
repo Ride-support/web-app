@@ -38,8 +38,9 @@ class LoginForm extends Component {
         })
         console.log(response);
         const token = response.data.loginDriver.token;
-        localStorage.setItem('driverToken',token);
-        alert(JSON.stringify(response.data.loginDriver));
+        localStorage.setItem('token',token);
+        alert("El token es\n"+JSON.stringify(response.data.loginDriver.token));
+		window.location.assign("/driver_index");
     };
 
 	handleSubmitCompany = async  (ev,args)=>{
@@ -51,14 +52,15 @@ class LoginForm extends Component {
         })
         console.log(response);
 		const token = response.data.loginCompany.token;
-		localStorage.setItem('companyToken',token);
-        alert(JSON.stringify(response.data.loginCompany));
+		localStorage.setItem('token',token);
+        alert("El token es\n"+JSON.stringify(response.data.loginCompany.token));
+        window.location.assign("/company_index");
     };
 
     render() {
 		return (
 			<div >
-				<Button outline onClick={this.toggleModal}><span>Login</span></Button>
+				<Button className="bg-warning" outline onClick={this.toggleModal}><span>Log in</span></Button>
 				<Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal} >
 					<ModalHeader toggle={this.toggleModal}>Login</ModalHeader>
 					<ModalBody>

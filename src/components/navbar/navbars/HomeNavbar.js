@@ -1,15 +1,14 @@
-import React, {Component} from 'react';
-import { Button } from 'react-bootstrap';
+import React from 'react';
 import { FaCar } from 'react-icons/fa';
 import { FcSearch } from 'react-icons/fc';
 import { IconContext } from "react-icons";
 import LoginComponent from "../../login/LoginComponent";
 
-export default ({}) => {
+export default () => {
    return (
        <div>
            <nav className="navbar navbar-expand-lg navbar-light bg-dark">
-               <a className="navbar-brand pl-5" href="#">
+               <a className="navbar-brand pl-5" href="/home">
                    <div className="row">
                        <IconContext.Provider value={{ color: "red", size: "2em" }} >
                            <FaCar/>

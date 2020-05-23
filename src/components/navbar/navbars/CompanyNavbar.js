@@ -1,13 +1,13 @@
-import React, {Component} from 'react';
+import React from 'react';
 import { Dropdown } from 'react-bootstrap';
 import { FaCar } from 'react-icons/fa';
 import { IconContext } from "react-icons";
 
-export default ({}) => {
+export default () => {
     return (
         <div>
             <nav className="navbar navbar-expand-lg navbar-light bg-dark">
-                <a className="navbar-brand pl-5" href="#">
+                <a className="navbar-brand pl-5" href="/home">
                     <div className="row">
                         <IconContext.Provider value={{ color: "red", size: "2em" }} >
                             <FaCar/>
@@ -32,7 +32,7 @@ export default ({}) => {
                                 <Dropdown.Menu>
                                     <Dropdown.Item href="#/action-1">Editar Perfil Empresa</Dropdown.Item>
                                     <Dropdown.Divider />
-                                    <Dropdown.Item href="#/action-2">Log out </Dropdown.Item>
+                                    <Dropdown.Item href="/home">Log out </Dropdown.Item>
                                 </Dropdown.Menu>
                             </Dropdown>
                         </li>

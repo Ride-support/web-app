@@ -17,7 +17,7 @@ export default({styles, handleSubmit}) =>{
 
                 <Form.Input name='email' label='Email' placeholder='Write driver email'  onChange={handleChange} />
                 <Form.Input name='password' label='Password' type='password' placeholder='Write driver password' onChange={handleChange} />
-                <Button type='submit' primary fluid >Sign in as Driver</Button>
+                <Button className="bg-warning" type='submit' fluid >Sign in as Driver</Button>
             </Form>
         </div>
     </div>

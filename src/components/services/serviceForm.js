@@ -42,7 +42,7 @@ export default ({handleSubmit}) =>{
         <div className="container ">
             <div className="row ">
                 <div className="col-md-12 ">
-                    <Form className="p-3 bg-light " onSubmit={(ev) => handleSubmit(ev,args)} >
+                    <Form className="p-3 bg-light " onSubmit={(ev) => handleSubmit(ev,args)} id="form">
                         <div className="row justify-content-center d-flex m-0">
                             <div className="ui labeled input w-100">
                                 <div className="ui label label">Company ID</div>
@@ -97,7 +97,7 @@ export default ({handleSubmit}) =>{
 
                             </div>
                             <div className="text-center col-md-4 ">
-                                <button type="submit" className=" btn btn-block p-2 btn-primary ">
+                                <button type="submit" className=" btn btn-block p-2 btn-warning ">
                                     <b>Add Service</b></button>
                             </div>
                         </div>

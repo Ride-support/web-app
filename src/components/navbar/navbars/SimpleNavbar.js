@@ -1,12 +1,12 @@
-import React, {Component} from 'react';
+import React from 'react';
 import { FaCar } from 'react-icons/fa';
 import { IconContext } from "react-icons";
 
-export default ({}) => {
+export default ({handlerState}) => {
     return (
         <div>
             <nav className="navbar navbar-expand-lg navbar-light bg-dark">
-                <a className="navbar-brand pl-5" href="#">
+                <a className="navbar-brand pl-5">
                     <div className="row">
                         <IconContext.Provider value={{ color: "red", size: "2em" }} >
                             <FaCar/>

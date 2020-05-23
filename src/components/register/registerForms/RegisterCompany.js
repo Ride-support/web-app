@@ -26,7 +26,7 @@ return (
   <Form.Input name='phone' label='Contact Phone' type='number' placeholder='Write Phone number' onChange={handleChange}/>
   <Form.Input name='manager' label='Company Manager' placeholder='Write Manager' onChange={handleChange} />
 
-<Button type='submit' 
+<Button type='submit'
 
 className="bg-warning "
 fluid 
