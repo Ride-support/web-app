@@ -23,14 +23,50 @@ const isAuthenticated = ()=>{
     return isValid;
 };
 
-const MyRoute = (props)=>{
-    if (isAuthenticated()){
+const DriverRoute = (props)=>{
+    if (isAuthenticated() && localStorage.getItem("user_type")=="driver"){
         return <Route {...props} />
-    }else{
-        console.log("No está autenticado");
+    }else if(isAuthenticated() && !(localStorage.getItem("user_type")=="driver")){
+        alert("No está autenticado como driver");
+        return <Redirect to="/home" />
+    }else if(!isAuthenticated()){
+        alert("No está autenticado en la aplicación");
         return <Redirect to="/home" />
     }
 }
+
+const CompanyRoute = (props)=>{
+    if (isAuthenticated() && localStorage.getItem("user_type")=="company"){
+        return <Route {...props} />
+    }else if(isAuthenticated() && !(localStorage.getItem("user_type")=="company")){
+        alert("No está autenticado como company");
+        return <Redirect to="/home" />
+    }else if(!isAuthenticated()){
+        alert("No está autenticado en la aplicación");
+        return <Redirect to="/home" />
+    }
+}
+
+const HomeRoute = (props)=>{
+    if (isAuthenticated()){
+
+        if(localStorage.getItem("user_type")=="company"){
+            alert("No puedes acceder al home porque estás autenticado como company");
+            return <Redirect to="/company_index" />
+        }else if(localStorage.getItem("user_type")=="driver"){
+            alert("No puedes acceder al home porque estás autenticado como driver");
+            return <Redirect to="/driver_index" />
+        }else{
+            alert("No puedes acceder al home porque estás autenticado NI DRIVER NI COMPANY :o");
+            return <Redirect to="/" />
+        }
+
+    }else{
+        return <Route {...props} />
+    }
+
+}
+
 
 
 class App extends Component{
@@ -45,30 +81,29 @@ class App extends Component{
             <div>
                 <div className="row fixed-top">
                     <div className="col-md-12 p-0">
-                        <Route path="/home">
-                            <HomeNavbar/>
-                        </Route>
-                        <MyRoute path="/firstService" >
-
-                            <SimpleNavbar/>
-                        </MyRoute>
-                        <MyRoute path="/firstVehicle">
-                            <SimpleNavbar/>
-                        </MyRoute>
-                        <MyRoute path="/driver_index">
-                            <DriverNavbar/>
-                        </MyRoute>
-                        <MyRoute path="/company_index">
-                            <CompanyNavbar/>
-                        </MyRoute>
-                        <MyRoute path="/driver_profile">
-                            <DriverNavbar/>
-                        </MyRoute>
-                        <MyRoute path="/company_profile">
-                            <CompanyNavbar/>
-                        </MyRoute>
-
-
+                        <Switch>
+                            <HomeRoute path="/home">
+                                <HomeNavbar/>
+                            </HomeRoute>
+                            <CompanyRoute path="/firstService" >
+                                <SimpleNavbar/>
+                            </CompanyRoute>
+                            <DriverRoute path="/firstVehicle">
+                                <SimpleNavbar/>
+                            </DriverRoute>
+                            <DriverRoute path="/driver_index">
+                                <DriverNavbar/>
+                            </DriverRoute>
+                            <CompanyRoute path="/company_index">
+                                <CompanyNavbar/>
+                            </CompanyRoute>
+                            <DriverRoute path="/driver_profile">
+                                <DriverNavbar/>
+                            </DriverRoute>
+                            <CompanyRoute path="/company_profile">
+                                <CompanyNavbar/>
+                            </CompanyRoute>
+                        </Switch>
                     </div>
 
                 </div>

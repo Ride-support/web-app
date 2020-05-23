@@ -90,7 +90,9 @@ class FirstServiceComponent extends Component{
             <div className="container-fluid">
                 <Grid columns={1} centered style={styles.div}>
                     <Grid.Row className="mt-5 pt-5" style={styles.topRow}>
-                        <h1 style={styles.h1} className="text-light">Bienvenido a </h1>
+                        <h1 style={styles.h1} className="text-light">Hola</h1>
+                        <h1 style={styles.h1} className="text-danger mx-3">{localStorage.getItem("name")}</h1>
+                        <h1 style={styles.h1} className="text-light">, Bienvenido a </h1>
                         <h1 style={styles.h1} className="font-italic text-warning pt-1 ml-3"> Ride-Support</h1>
                     </Grid.Row>
                     <Grid.Row >
