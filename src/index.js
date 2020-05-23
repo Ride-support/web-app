@@ -7,7 +7,7 @@ import { ApolloProvider } from '@apollo/react-hooks';
 import client from './apollo';
 import gql from 'graphql-tag';
 
-client
+/*client
   .query({
     query: gql`
     {
@@ -20,7 +20,7 @@ client
 
     `
   })
-  .then(result => console.log(result));
+  .then(result => console.log(result));*/
 
 const App =
 <ApolloProvider client={client}>

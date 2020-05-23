@@ -5,13 +5,34 @@ import {flowRight as compose} from 'lodash';
 import LoginDriver from './loginForms/LoginDriver'
 import LoginCompany from './loginForms/LoginCompany'
 import { Tabs } from "@yazanaabed/react-tabs";
+import decode from 'jwt-decode';
+import gql from 'graphql-tag';
+import client from '../../apollo';
+
 //Custom utils 
 import queries from '../utils/queries';
+
+const driverById = gql`
+	query driverById($id: Int!) {
+		driverById(id: $id) {
+			name
+			lastname
+		}
+	}
+`;
+
+const companyById = gql`
+	query companyById($id: Int!) {
+		companyById(id: $id){
+			manager
+		}
+	}
+`;
 
 //the login form
 
 class LoginForm extends Component {
-	
+
 	constructor(props) {
 		super(props);
 		this.toggleModal = this.toggleModal.bind(this);
@@ -30,15 +51,31 @@ class LoginForm extends Component {
 	}
 
     handleSubmitDriver = async  (ev,args)=>{
+
 		this.toggleModal();
         ev.preventDefault();
         console.log(args);
+
         const response = await this.props.loginDriver({
             variables:args
         })
         console.log(response);
+
         const token = response.data.loginDriver.token;
-        localStorage.setItem('token',token);
+		const driverID = decode(token).sub;
+        localStorage.setItem("user_type","driver");
+        localStorage.setItem("id",driverID);
+		localStorage.setItem('token',token);
+
+		client.query({
+			query: driverById,
+			variables: {
+				id: driverID
+			}
+		}).then(result => {
+			localStorage.setItem("name",result.data.driverById.name+" "+result.data.driverById.lastname);
+		});
+
         alert("El token es\n"+JSON.stringify(response.data.loginDriver.token));
 		window.location.assign("/driver_index");
     };
@@ -47,17 +84,34 @@ class LoginForm extends Component {
 		this.toggleModal();
         ev.preventDefault();
         console.log(args);
-        const response = await this.props.loginCompany({
+
+        const loginResponse = await this.props.loginCompany({
             variables:args
         })
-        console.log(response);
-		const token = response.data.loginCompany.token;
+        console.log(loginResponse);
+
+		const token = loginResponse.data.loginCompany.token;
+		const companyID = decode(token).sub;
+		localStorage.setItem("user_type","company");
+		localStorage.setItem("id",companyID);
 		localStorage.setItem('token',token);
-        alert("El token es\n"+JSON.stringify(response.data.loginCompany.token));
+
+		client.query({
+			query: companyById,
+			variables: {
+				id: companyID
+			}
+		}).then(result => {
+			localStorage.setItem("name",result.data.companyById.manager);
+		});
+
+        alert("El token es\n"+JSON.stringify(loginResponse.data.loginCompany.token));
         window.location.assign("/company_index");
     };
 
     render() {
+
+
 		return (
 			<div >
 				<Button className="bg-warning" outline onClick={this.toggleModal}><span>Log in</span></Button>
@@ -89,5 +143,6 @@ class LoginForm extends Component {
 
 export default compose(
     graphql(queries.mutation.LOGIN_DRIVER,{name:'loginDriver'}),
-    graphql(queries.mutation.LOGIN_COMPANY,{name:'loginCompany'}),
+    graphql(queries.mutation.LOGIN_COMPANY,{name:'loginCompany'})
+
 )(LoginForm);

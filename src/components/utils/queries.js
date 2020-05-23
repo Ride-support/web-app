@@ -1,4 +1,4 @@
-import { gql } from "apollo-boost";
+import gql from 'graphql-tag';
 
 export default{
     query:{
@@ -30,10 +30,20 @@ export default{
       }
       `,
 
+        GET_DRIVER_BY_ID : gql`
+            query driverById($id: Int!){
+                driverById(id: $id) {
+                    name
+                    lastname
+                }
+            }
+        `,
+
+
     },
     mutation:{
         CREATE_COMPANY : gql`
-    mutation  createCompany( $email: String! , $password: String! , $name: String! , $city: String! , $address: String! , $phone : Int! , $manager: String! ) {
+        mutation  createCompany( $email: String! , $password: String! , $name: String! , $city: String! , $address: String! , $phone : Int! , $manager: String! ) {
       createCompany( company :{
         email:$email ,
         password:$password ,

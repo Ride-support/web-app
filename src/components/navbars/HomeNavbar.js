@@ -2,7 +2,7 @@ import React from 'react';
 import { FaCar } from 'react-icons/fa';
 import { FcSearch } from 'react-icons/fc';
 import { IconContext } from "react-icons";
-import LoginComponent from "../../login/LoginComponent";
+import LoginComponent from "../login/LoginComponent";
 
 export default () => {
    return (

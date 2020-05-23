@@ -2,18 +2,12 @@ import React from 'react';
 import { Dropdown } from 'react-bootstrap';
 import { FaCar } from 'react-icons/fa';
 import { IconContext } from "react-icons";
-import Redirect from "react-router-dom/es/Redirect";
-
-const logOut = ()=>{
-    ;
-    return <Redirect to="/home"/>
-}
 
 export default () => {
     return (
         <div>
             <nav className="navbar navbar-expand-lg navbar-light bg-dark">
-                <a className="navbar-brand pl-5" href="/home">
+                <a className="navbar-brand pl-5" href="/company_index">
                     <div className="row">
                         <IconContext.Provider value={{ color: "red", size: "2em" }} >
                             <FaCar/>
@@ -32,13 +26,19 @@ export default () => {
                         <li className="nav-item active mx-5">
                             <Dropdown>
                                 <Dropdown.Toggle variant="warning" id="dropdown-basic">
-                                    [USER_NAME]
+                                    {localStorage.getItem("name")}
                                 </Dropdown.Toggle>
 
                                 <Dropdown.Menu>
-                                    <Dropdown.Item href="#/action-1">Editar Perfil Conductor</Dropdown.Item>
+                                    <Dropdown.Item href="#/action-1">Editar Perfil Empresa</Dropdown.Item>
                                     <Dropdown.Divider />
-                                    <Dropdown.Item href="/home" >Log out </Dropdown.Item>
+                                    <Dropdown.Item href="/home" onClick={()=>{
+                                        localStorage.removeItem("user_type");
+                                        localStorage.removeItem("id");
+                                        localStorage.removeItem("token");
+                                        localStorage.removeItem("name");
+                                    }
+                                    }>Log out </Dropdown.Item>
                                 </Dropdown.Menu>
                             </Dropdown>
                         </li>

@@ -1,11 +1,37 @@
 import React, {Component} from 'react';
 import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import Home from "./home";
 import FirstServiceComponent from "../components/first/service/FirstServiceComponent";
-import HomeNavbar from "../components/navbar/navbars/HomeNavbar";
-import DriverNavbar from "../components/navbar/navbars/DriverNavbar";
-import CompanyNavbar from "../components/navbar/navbars/CompanyNavbar";
-import SimpleNavbar from "../components/navbar/navbars/SimpleNavbar";
+import HomeNavbar from "../components/navbars/HomeNavbar";
+import DriverNavbar from "../components/navbars/DriverNavbar";
+import CompanyNavbar from "../components/navbars/CompanyNavbar";
+import SimpleNavbar from "../components/navbars/SimpleNavbar";
+import decode from 'jwt-decode';
+import gql from 'graphql-tag';
+import client from "../apollo";
+
+const isAuthenticated = ()=>{
+    const token = localStorage.getItem('token')
+    let isValid = true
+    try{
+        isValid = decode(token);
+
+    }catch(e){
+        return false;
+    }
+    return isValid;
+};
+
+const MyRoute = (props)=>{
+    if (isAuthenticated()){
+        return <Route {...props} />
+    }else{
+        console.log("No está autenticado");
+        return <Redirect to="/home" />
+    }
+}
+
 
 class App extends Component{
 
@@ -22,24 +48,25 @@ class App extends Component{
                         <Route path="/home">
                             <HomeNavbar/>
                         </Route>
-                        <Route path="/firstService">
+                        <MyRoute path="/firstService" >
+
                             <SimpleNavbar/>
-                        </Route>
-                        <Route path="/firstVehicle">
+                        </MyRoute>
+                        <MyRoute path="/firstVehicle">
                             <SimpleNavbar/>
-                        </Route>
-                        <Route path="/driver_index">
+                        </MyRoute>
+                        <MyRoute path="/driver_index">
                             <DriverNavbar/>
-                        </Route>
-                        <Route path="/company_index">
+                        </MyRoute>
+                        <MyRoute path="/company_index">
                             <CompanyNavbar/>
-                        </Route>
-                        <Route path="/driver_profile">
+                        </MyRoute>
+                        <MyRoute path="/driver_profile">
                             <DriverNavbar/>
-                        </Route>
-                        <Route path="/company_profile">
+                        </MyRoute>
+                        <MyRoute path="/company_profile">
                             <CompanyNavbar/>
-                        </Route>
+                        </MyRoute>
 
 
                     </div>

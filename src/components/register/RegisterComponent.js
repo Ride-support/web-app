@@ -11,6 +11,7 @@ import queries from '../utils/queries';
 
 import RegisterCompany from '../register/registerForms/RegisterCompany';
 import RegisterDriver from '../register/registerForms/RegisterDriver';
+import decode from "jwt-decode";
 
 class RegisterComponent extends Component{
 	constructor(props) {
@@ -37,7 +38,14 @@ class RegisterComponent extends Component{
         })
         console.log(response);
         
-        alert("Autenticado con Token: "+JSON.stringify(response.data.createCompany.token));
+
+		const companyID = decode(response.data.createCompany.token).sub;
+		localStorage.setItem("id",companyID);
+		localStorage.setItem('token',response.data.createCompany.token);
+		localStorage.setItem("user_type","company");
+		localStorage.setItem("name",args.manager);
+
+		alert("Autenticado con Token: "+JSON.stringify(response.data.createCompany.token));
 		window.location.assign("/firstService");
     };
 
@@ -48,6 +56,14 @@ class RegisterComponent extends Component{
           variables:args
         })
         console.log(response);
+
+		const driverID = decode(response.data.createDriver.token).sub;
+		localStorage.setItem("id",driverID);
+		localStorage.setItem('token',response.data.createDriver.token);
+		localStorage.setItem("user_type","driver");
+		localStorage.setItem("name",args.name+" "+args.lastname);
+
+
 		alert("Autenticado con Token: "+JSON.stringify(response.data.createDriver.token));
 		window.location.assign("/firstVehicle");
     }
