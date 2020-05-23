@@ -43,6 +43,7 @@ export default () => {
                                             localStorage.removeItem("id");
                                             localStorage.removeItem("token");
                                             localStorage.removeItem("name");
+                                            localStorage.removeItem("vehicle_type");
                                         }
                                     }
                                     >Log out </Dropdown.Item>

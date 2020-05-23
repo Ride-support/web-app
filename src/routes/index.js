@@ -11,7 +11,7 @@ import '../css/main.css';
 
 import Home from './home';
 import 'semantic-ui-css/semantic.min.css'
-import FirstServiceComponent from "../components/first/service/FirstServiceComponent";
+import FirstServiceComponent from "../components/first/FirstServiceComponent";
 import App from "./app";
 //*/
 //import { render } from 'react-dom';

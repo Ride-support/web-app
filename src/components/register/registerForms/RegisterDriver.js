@@ -3,10 +3,18 @@ import { Divider, Form , Button } from 'semantic-ui-react';
 
 export default({ handleSubmit}) =>{
 
-    const args = {};
+    const args = {
+        vehicle : "carro"
+    };
 
     const handleChange = (ev,input)=>{
         args[input.name] = input.value;
+        console.log(args);
+    }
+
+    const handleChangeSelect = (ev,input)=>{
+        args["vehicle"] = document.getElementById("selectID").value;
+        console.log(args);
     }
 
     return (
@@ -23,7 +31,14 @@ export default({ handleSubmit}) =>{
                 <Form.Input name='age' label='Age' type='number'  placeholder='Write your age' onChange={handleChange} />
                 <Form.Input name='address' label='Address' placeholder='Write your address' onChange={handleChange}/>
                 <Form.Input name='phone' label='Phone' type='number'  placeholder='Write your phone number' onChange={handleChange} />
-                <Form.Input name='vehicle' label='Type Vehicle' placeholder='Write your vehicle type' onChange={handleChange} />
+                <div className="form-group">
+                    <label className="font-weight-bold" htmlFor="selectID">Vehicle Type</label>
+                    <select className="form-control" id="selectID" onChange={handleChangeSelect} placeholder="Select your vehicle type">
+                        <option>Carro</option>
+                        <option>Moto</option>
+                        <option>Bicicleta</option>
+                    </select>
+                </div>
                 <Button type='submit' className="bg-warning" fluid >Sign up</Button>
             </Form>
             <Divider horizontal > 0</Divider>

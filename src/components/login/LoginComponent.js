@@ -17,6 +17,7 @@ const driverById = gql`
 		driverById(id: $id) {
 			name
 			lastname
+			vehicle
 		}
 	}
 `;
@@ -25,6 +26,8 @@ const companyById = gql`
 	query companyById($id: Int!) {
 		companyById(id: $id){
 			manager
+			name
+			address
 		}
 	}
 `;
@@ -74,6 +77,7 @@ class LoginForm extends Component {
 			}
 		}).then(result => {
 			localStorage.setItem("name",result.data.driverById.name+" "+result.data.driverById.lastname);
+			localStorage.setItem("vehicle_type",result.data.driverById.vehicle.toLocaleLowerCase());
 		});
 
         alert("El token es\n"+JSON.stringify(response.data.loginDriver.token));
@@ -103,6 +107,8 @@ class LoginForm extends Component {
 			}
 		}).then(result => {
 			localStorage.setItem("name",result.data.companyById.manager);
+			localStorage.setItem("company_name",result.data.companyById.name);
+			localStorage.setItem("location",result.data.companyById.address);
 		});
 
         alert("El token es\n"+JSON.stringify(loginResponse.data.loginCompany.token));

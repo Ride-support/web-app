@@ -44,6 +44,8 @@ class RegisterComponent extends Component{
 		localStorage.setItem('token',response.data.createCompany.token);
 		localStorage.setItem("user_type","company");
 		localStorage.setItem("name",args.manager);
+		localStorage.setItem("company_name",args.name);
+		localStorage.setItem("location",args.address);
 
 		alert("Autenticado con Token: "+JSON.stringify(response.data.createCompany.token));
 		window.location.assign("/firstService");
@@ -62,10 +64,11 @@ class RegisterComponent extends Component{
 		localStorage.setItem('token',response.data.createDriver.token);
 		localStorage.setItem("user_type","driver");
 		localStorage.setItem("name",args.name+" "+args.lastname);
+		localStorage.setItem("vehicle_type",args.vehicle);
 
 
 		alert("Autenticado con Token: "+JSON.stringify(response.data.createDriver.token));
-		window.location.assign("/firstVehicle");
+		window.location.assign("/driver_index");
     }
 
     render(){

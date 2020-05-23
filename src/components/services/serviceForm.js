@@ -26,7 +26,12 @@ export default ({handleSubmit}) =>{
     const all_services = data.allServicesM.map( item => {
         return { key: item.Idcompany, value: item.Service, text: item.Service };
     });
-    const args = {};
+    const args = {
+        Idcompany: localStorage.getItem("id"),
+        Name: localStorage.getItem("company_name"),
+        Location : localStorage.getItem("location")
+
+    };
 
     const updateApplicationState = (ev,input)=>{
         if (input.name == 'Idcompany'){
@@ -43,42 +48,19 @@ export default ({handleSubmit}) =>{
             <div className="row ">
                 <div className="col-md-12 ">
                     <Form className="p-3 bg-light " onSubmit={(ev) => handleSubmit(ev,args)} id="form">
-                        <div className="row justify-content-center d-flex m-0">
-                            <div className="ui labeled input w-100">
-                                <div className="ui label label">Company ID</div>
-                                <Form.Input className='w-100' type='number' placeholder='Write your company id'  name='Idcompany' onChange={updateApplicationState}/>
-                            </div>
-                        </div>
-                        <div className="row justify-content-center d-flex m-0 mt-2">
-                            <div className="ui labeled input w-100">
-                                <div className="ui label label">Service Type</div>
-                                <Form.Select  className="w-100" placeholder='Select your service type' options={all_services} name="Service" onChange={updateApplicationState}/>
-                            </div>
-                        </div>
-                        <hr className="bg-info"></hr>
-                        <div className="row">
-                            <div className="col-md-12 text-center">
-                                <h4>About company </h4>
-                            </div>
-                        </div>
-                        <div className="row justify-content-center d-flex m-0 mt-2">
-                            <div className="ui labeled input w-100">
-                                <div className="ui label label">Name</div>
-                                <Form.Input type="text" placeholder="Write your company's name" className="w-100" name="Name" onChange={updateApplicationState}/>
-                            </div>
-                        </div>
-                        <div className="row justify-content-center d-flex m-0 mt-2">
-                            <div className="ui labeled input w-100">
-                                <div className="ui label label">Location</div>
-                                <Form.Input type="text" placeholder="Write your company's location" className="w-100" name="Location" onChange={updateApplicationState}/>
-                            </div>
-                        </div>
-                        <hr className="bg-info"></hr>
                         <div clas="row">
                             <div className="col-md-12 text-center">
                                 <h4>About service </h4>
                             </div>
                         </div>
+                        <div className="row justify-content-center d-flex m-0 mt-2">
+                            <div className="ui labeled input w-100">
+                                <div className="ui label label">Service Type</div>
+                                <Form.Select  className="w-100" placeholder='Select your service type' options={all_services} name="Service" onChange={updateApplicationState} id="select"/>
+                            </div>
+                        </div>
+
+
                         <div className="row justify-content-center d-flex m-0 mt-2">
                             <div className="ui labeled input w-100">
                                 <div className="ui label label">Price</div>

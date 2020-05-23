@@ -1,9 +1,9 @@
 import React, {Component, useState} from 'react';
 import { Carousel,Card,Button } from 'react-bootstrap';
 import {Grid} from "semantic-ui-react";
-import ServiceForm from "../../services/serviceForm";
+import ServiceForm from "../services/serviceForm";
 import {graphql} from "react-apollo";
-import serviceQueries from "../../services/serviceQueries";
+import serviceQueries from "../services/serviceQueries";
 import {flowRight as compose} from 'lodash';
 
 const styles={
@@ -63,6 +63,9 @@ class FirstServiceComponent extends Component{
 
     reloadForm = () => {
         document.getElementById("form").reset();
+        console.log("hi");
+        console.log(document.getElementById("select").name);
+        console.log("bye");
         this.handleSelect();
 
     };
@@ -120,7 +123,7 @@ class FirstServiceComponent extends Component{
                                                     <Button variant="info" onClick={this.reloadForm}>Agregar más servicios</Button>
                                                 </div>
                                                 <div className="col-md-6">
-                                                    <Button variant="warning">Continuar</Button>
+                                                    <Button variant="warning" href="/company_index">Continuar</Button>
                                                 </div>
                                             </div>
 

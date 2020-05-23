@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import { Redirect } from "react-router-dom";
 import Home from "./home";
-import FirstServiceComponent from "../components/first/service/FirstServiceComponent";
+import FirstServiceComponent from "../components/first/FirstServiceComponent";
 import HomeNavbar from "../components/navbars/HomeNavbar";
 import DriverNavbar from "../components/navbars/DriverNavbar";
 import CompanyNavbar from "../components/navbars/CompanyNavbar";
@@ -115,6 +115,7 @@ class App extends Component{
                         <Route path="/firstService">
                             <FirstServiceComponent/>
                         </Route>
+
                     </Switch>
                 </div>
             </div>
