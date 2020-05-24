@@ -7,6 +7,10 @@ import Icon from "semantic-ui-react/dist/commonjs/elements/Icon";
 import gql from "graphql-tag";
 import {useQuery} from "@apollo/react-hooks";
 import { FaParking } from 'react-icons/fa';
+import Button from "react-bootstrap/Button";
+import CardHeader from "reactstrap/es/CardHeader";
+import ShowServicesComponent from "../services/showServices";
+import {MDBContainer} from "mdbreact";
 
 const mapURL = `https://maps.googleapis.com/maps/api/js?v_3.exp&key=${credential.mapsKey}`;
 
@@ -16,20 +20,29 @@ const styles={
         backgroundPosition: 'center',
         backgroundSize: 'cover',
         backgroundRepeat: 'repeat',
-        height: "57em"
+        height: "63em"
 
     },
     vehicleCard:{
-        height: "28%"
+        height: "15em"
     },
     serviceCard:{
-        height: "28%"
+        height: "17em"
     },
     listCard:{
-        height: "27%"
+        height: "20em"
     },
     inline:{
         display: "inline-block"
+    },
+    button:{
+        backgroundColor: "transparent",
+        borderStyle: "none"
+    },
+    scroll:{
+        overflow: "scroll",
+        maxWidth: "20px",
+        maxHeight: "20px"
     }
 }
 
@@ -43,6 +56,7 @@ const ALL_SERVICES = gql`
 `;
 
 export default ()=>{
+
 
     const showVehicle = ()=>{
         const vehicle_type = localStorage.getItem("vehicle_type");
@@ -209,7 +223,8 @@ export default ()=>{
         if(not_repeated_all_services.indexOf("Lavadero")>=0){
             return (
                 <div className="row justify-content-center">
-                    <Icon name="check circle"  className="ml-1 text-dark " size="big" color="green"/>
+                    <Icon name="check circle"  className="ml-1 text-dark " size="big" color="green" />
+
                 </div>
             );
         }else{
@@ -249,6 +264,7 @@ export default ()=>{
         );
     }
 
+
     return(
         <div className="container-fluid px-0" style={styles.component}>
             <div className="row mt-5 pt-4 mx-0 px-0 h-100">
@@ -278,8 +294,10 @@ export default ()=>{
                             <h1 className="text-info font-italic mt-3">Servicios disponibles </h1>
                         </div>
 
-                        <div className="row text-center d-flex justify-content-center">
-                            {}
+                        <div className="row d-flex justify-content-center overflow-auto mx-0 mt-2">
+                            <div className="col-md-12 ">
+                                <ShowServicesComponent style={styles.scroll}/>
+                            </div>
                         </div>
                     </Card>
                 </div>
