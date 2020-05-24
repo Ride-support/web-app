@@ -9,12 +9,10 @@ export default({ handleSubmit}) =>{
 
     const handleChange = (ev,input)=>{
         args[input.name] = input.value;
-        console.log(args);
     }
 
     const handleChangeSelect = (ev,input)=>{
         args["vehicle"] = document.getElementById("selectID").value;
-        console.log(args);
     }
 
     return (
@@ -34,6 +32,7 @@ export default({ handleSubmit}) =>{
                 <div className="form-group">
                     <label className="font-weight-bold" htmlFor="selectID">Vehicle Type</label>
                     <select className="form-control" id="selectID" onChange={handleChangeSelect} placeholder="Select your vehicle type">
+                        <option value="" disabled>Select your vehicle type</option>
                         <option>Carro</option>
                         <option>Moto</option>
                         <option>Bicicleta</option>

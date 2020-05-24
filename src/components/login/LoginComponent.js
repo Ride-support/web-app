@@ -11,6 +11,7 @@ import client from '../../apollo';
 
 //Custom utils 
 import queries from '../utils/queries';
+import Icon from "semantic-ui-react/dist/commonjs/elements/Icon";
 
 const driverById = gql`
 	query driverById($id: Int!) {
@@ -77,7 +78,7 @@ class LoginForm extends Component {
 			}
 		}).then(result => {
 			localStorage.setItem("name",result.data.driverById.name+" "+result.data.driverById.lastname);
-			localStorage.setItem("vehicle_type",result.data.driverById.vehicle.toLocaleLowerCase());
+			localStorage.setItem("vehicle_type",result.data.driverById.vehicle.toLowerCase());
 		});
 
         alert("El token es\n"+JSON.stringify(response.data.loginDriver.token));
@@ -120,7 +121,10 @@ class LoginForm extends Component {
 
 		return (
 			<div >
-				<Button className="bg-warning" outline onClick={this.toggleModal}><span>Log in</span></Button>
+				<Button className="bg-warning" outline onClick={this.toggleModal}>
+					<span className="font-weight-bold text-dark font-italic">Log in</span>
+					<Icon name="sign-in"  className="ml-1 text-dark" size="large"/>
+				</Button>
 				<Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal} >
 					<ModalHeader toggle={this.toggleModal}>Login</ModalHeader>
 					<ModalBody>

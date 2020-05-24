@@ -2,11 +2,20 @@ import React from 'react';
 import { Dropdown } from 'react-bootstrap';
 import { FaCar } from 'react-icons/fa';
 import { IconContext } from "react-icons";
-import Redirect from "react-router-dom/es/Redirect";
+import Icon from "semantic-ui-react/dist/commonjs/elements/Icon";
 
-const logOut = ()=>{
-    ;
-    return <Redirect to="/home"/>
+
+const styles={
+    div: {
+        backgroundImage: "url(" + "images/HomeBackground.jpg" + ")",
+        backgroundPosition: 'center',
+        backgroundSize: 'cover',
+        backgroundRepeat: 'repeat'
+
+    },
+    inline:{
+        display: "inline-block"
+    }
 }
 
 export default () => {
@@ -32,11 +41,18 @@ export default () => {
                         <li className="nav-item active mx-5">
                             <Dropdown>
                                 <Dropdown.Toggle variant="warning" id="dropdown-basic">
-                                    {localStorage.getItem("name")}
+                                    <h6 style={styles.inline} className="font-weight-bold mt-2">{localStorage.getItem("name")}</h6>
+
+                                    <Icon style={styles.inline} name="car"  className="ml-1 text-dark " size="large"/>
                                 </Dropdown.Toggle>
 
                                 <Dropdown.Menu>
-                                    <Dropdown.Item href="#/action-1">Editar Perfil Conductor</Dropdown.Item>
+                                    <Dropdown.Item href="#/action-1">
+                                        <div className="d-flex justify-content-end">
+                                            <h5 style={styles.inline} >Editar perfil conductor</h5>
+                                            <Icon style={styles.inline} name="edit"  size="large"/>
+                                        </div>
+                                    </Dropdown.Item>
                                     <Dropdown.Divider />
                                     <Dropdown.Item href="/home" onClick={()=>{
                                             localStorage.removeItem("user_type");
@@ -46,7 +62,12 @@ export default () => {
                                             localStorage.removeItem("vehicle_type");
                                         }
                                     }
-                                    >Log out </Dropdown.Item>
+                                    >
+                                        <div className="d-flex justify-content-end">
+                                            <h5 style={styles.inline} >Log out</h5>
+                                            <Icon style={styles.inline} name="sign-out"  className="text-dark " size="large"/>
+                                        </div>
+                                    </Dropdown.Item>
                                 </Dropdown.Menu>
                             </Dropdown>
                         </li>

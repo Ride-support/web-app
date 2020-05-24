@@ -63,9 +63,7 @@ class FirstServiceComponent extends Component{
 
     reloadForm = () => {
         document.getElementById("form").reset();
-        console.log("hi");
-        console.log(document.getElementById("select").name);
-        console.log("bye");
+        console.log(document.getElementById("selectForm").name);
         this.handleSelect();
 
     };

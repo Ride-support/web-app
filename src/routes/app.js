@@ -10,6 +10,7 @@ import SimpleNavbar from "../components/navbars/SimpleNavbar";
 import decode from 'jwt-decode';
 import gql from 'graphql-tag';
 import client from "../apollo";
+import DriverIndexComponent from "../components/index/DriverIndexComponent";
 
 const isAuthenticated = ()=>{
     const token = localStorage.getItem('token')
@@ -115,6 +116,10 @@ class App extends Component{
                         <Route path="/firstService">
                             <FirstServiceComponent/>
                         </Route>
+                        <Route path="/driver_index">
+                            <DriverIndexComponent/>
+                        </Route>
+
 
                     </Switch>
                 </div>

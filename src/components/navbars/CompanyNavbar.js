@@ -2,6 +2,21 @@ import React from 'react';
 import { Dropdown } from 'react-bootstrap';
 import { FaCar } from 'react-icons/fa';
 import { IconContext } from "react-icons";
+import Icon from "semantic-ui-react/dist/commonjs/elements/Icon";
+
+
+const styles={
+    div: {
+        backgroundImage: "url(" + "images/HomeBackground.jpg" + ")",
+        backgroundPosition: 'center',
+        backgroundSize: 'cover',
+        backgroundRepeat: 'repeat'
+
+    },
+    inline:{
+        display: "inline-block"
+    }
+}
 
 export default () => {
     return (
@@ -26,19 +41,32 @@ export default () => {
                         <li className="nav-item active mx-5">
                             <Dropdown>
                                 <Dropdown.Toggle variant="warning" id="dropdown-basic">
-                                    {localStorage.getItem("name")}
+                                    <h6 style={styles.inline} className="font-weight-bold mt-2">{localStorage.getItem("name")}</h6>
+                                    <Icon style={styles.inline} name="wrench"  className="ml-2 text-dark " size="large"/>
                                 </Dropdown.Toggle>
 
                                 <Dropdown.Menu>
-                                    <Dropdown.Item href="#/action-1">Editar Perfil Empresa</Dropdown.Item>
+                                    <Dropdown.Item href="#/action-1">
+                                        <div className="d-flex justify-content-end">
+                                            <h5 style={styles.inline} >Editar perfil empresa</h5>
+                                            <Icon style={styles.inline} name="edit"  size="large"/>
+                                        </div>
+                                    </Dropdown.Item>
                                     <Dropdown.Divider />
                                     <Dropdown.Item href="/home" onClick={()=>{
                                         localStorage.removeItem("user_type");
                                         localStorage.removeItem("id");
                                         localStorage.removeItem("token");
-                                        localStorage.removeItem("name");
+                                        localStorage.removeItem("name");;
+                                        localStorage.removeItem("location");;
+                                        localStorage.removeItem("company_name");
                                     }
-                                    }>Log out </Dropdown.Item>
+                                    }>
+                                        <div className="d-flex justify-content-end">
+                                            <h5 style={styles.inline} >Log out</h5>
+                                            <Icon style={styles.inline} name="sign-out"  className="text-dark " size="large"/>
+                                        </div>
+                                    </Dropdown.Item>
                                 </Dropdown.Menu>
                             </Dropdown>
                         </li>

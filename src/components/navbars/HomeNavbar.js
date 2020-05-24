@@ -24,15 +24,7 @@ export default () => {
 
                <div className="collapse navbar-collapse" id="navbarSupportedContent">
                    <ul className="navbar-nav ml-auto">
-                       <li className="nav-item active mx-5">
-                           <a className="nav-link text-danger font-weight-bold" href="#">
-                               Find services
-                               <IconContext.Provider value={{ color: "red", size: "2em" }} >
-                                   <FcSearch/>
-                               </IconContext.Provider>
-                               <span className="sr-only">(current)</span>
-                           </a>
-                       </li>
+
                        <li className="nav-item px-4">
                            <LoginComponent/>
                        </li>

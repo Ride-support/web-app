@@ -64,7 +64,7 @@ class RegisterComponent extends Component{
 		localStorage.setItem('token',response.data.createDriver.token);
 		localStorage.setItem("user_type","driver");
 		localStorage.setItem("name",args.name+" "+args.lastname);
-		localStorage.setItem("vehicle_type",args.vehicle);
+		localStorage.setItem("vehicle_type",args.vehicle.toLowerCase());
 
 
 		alert("Autenticado con Token: "+JSON.stringify(response.data.createDriver.token));

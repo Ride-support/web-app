@@ -26,10 +26,12 @@ export default ({handleSubmit}) =>{
     const all_services = data.allServicesM.map( item => {
         return { key: item.Idcompany, value: item.Service, text: item.Service };
     });
+
     const args = {
         Idcompany: localStorage.getItem("id"),
         Name: localStorage.getItem("company_name"),
-        Location : localStorage.getItem("location")
+        Location : localStorage.getItem("location"),
+        Service : null
 
     };
 
@@ -40,6 +42,11 @@ export default ({handleSubmit}) =>{
             args[input.name] = input.value;
         }
 
+        console.log(args)
+    }
+
+    const updateApplicationStateSelect = (ev)=>{
+        args["Service"] = document.getElementById("selectForm").value;
         console.log(args)
     }
 
@@ -55,8 +62,19 @@ export default ({handleSubmit}) =>{
                         </div>
                         <div className="row justify-content-center d-flex m-0 mt-2">
                             <div className="ui labeled input w-100">
-                                <div className="ui label label">Service Type</div>
-                                <Form.Select  className="w-100" placeholder='Select your service type' options={all_services} name="Service" onChange={updateApplicationState} id="select"/>
+                                <label className="font-weight-bold text-muted" htmlFor="selectID">Vehicle Type</label>
+                                <select className="form-control w-100"  name="Service" id="selectForm" onChange={updateApplicationStateSelect} placeholder='Select your service type'>
+                                    <option  disabled selected>Select your service type</option>
+                                    <option>Parqueadero de carro</option>
+                                    <option>Parqueadero de moto</option>
+                                    <option>Parqueadero de bicicleta</option>
+                                    <option>Lavadero de carro</option>
+                                    <option>Lavadero de moto</option>
+                                    <option>Lavadero de bicicleta</option>
+                                    <option>Taller de carro</option>
+                                    <option>Taller de moto</option>
+                                    <option>Taller de bicicleta</option>
+                                </select>
                             </div>
                         </div>
 
