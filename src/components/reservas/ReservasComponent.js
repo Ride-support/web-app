@@ -55,24 +55,9 @@ class ReservasComponent extends Component {
             <div >
 				<Button outline onClick={this.toggleModal}><span>Reservas</span></Button>
 				<Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal} >
-					<ModalHeader toggle={this.toggleModal}>Reservas</ModalHeader>
+					<ModalHeader toggle={this.toggleModal}>Reservar servicio</ModalHeader>
 					<ModalBody>
-						<Tabs
-							activeTab={{
-								id: "tab1"
-							}}
-							>
-							<Tabs.Tab id="tab1" title="Ver reserva">
-								<div style={{ padding: 10 }}>
-                                <ShowReservas  />
-								</div>
-							</Tabs.Tab>
-							<Tabs.Tab id="tab2" title="Hacer Reserva">
-								<div style={{ padding: 10 }}>
-                                <FormReservas  handleSubmit={this.handleRegisterReserva} />
-								</div>
-							</Tabs.Tab>
-						</Tabs>
+						<FormReservas  handleSubmit={this.handleRegisterReserva} />
 					</ModalBody>
 				</Modal>
 			</div>
