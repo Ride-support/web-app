@@ -3,7 +3,7 @@ import { HttpLink } from 'apollo-link-http';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import { ApolloLink } from 'apollo-link';
 
-const httpLink = new HttpLink({uri:'http://35.224.135.194:5000/graphql'})
+const httpLink = new HttpLink({uri:'http://35.239.72.32:31686/graphql'})
 
 const authMiddleware = new ApolloLink((operation, forward) => {
     operation.setContext({
@@ -31,7 +31,7 @@ const authAfterware = new ApolloLink((operation, forward) => {
                 localStorage.removeItem('token')
                 window.location = "/login"
             }
-        };
+        }
         return response;
     });
 });
