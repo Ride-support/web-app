@@ -81,7 +81,7 @@ class LoginForm extends Component {
 			localStorage.setItem("vehicle_type",result.data.driverById.vehicle.toLowerCase());
 		});
 
-        alert("El token es\n"+JSON.stringify(response.data.loginDriver.token));
+        //alert("El token es\n"+JSON.stringify(response.data.loginDriver.token));
 		window.location.assign("/driver_index");
     };
 
@@ -112,7 +112,7 @@ class LoginForm extends Component {
 			localStorage.setItem("location",result.data.companyById.address);
 		});
 
-        alert("El token es\n"+JSON.stringify(loginResponse.data.loginCompany.token));
+        //alert("El token es\n"+JSON.stringify(loginResponse.data.loginCompany.token));
         window.location.assign("/company_index");
     };
 
