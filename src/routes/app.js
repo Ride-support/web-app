@@ -11,6 +11,7 @@ import decode from 'jwt-decode';
 import gql from 'graphql-tag';
 import client from "../apollo";
 import DriverIndexComponent from "../components/index/DriverIndexComponent";
+import CompanyIndexComponent from "../components/index/CompanyIndexComponent";
 
 const isAuthenticated = ()=>{
     const token = localStorage.getItem('token')
@@ -119,6 +120,9 @@ class App extends Component{
                         <Route path="/driver_index">
                             <DriverIndexComponent/>
                         </Route>
+                        <CompanyRoute path="/company_index">
+                            <CompanyIndexComponent/>
+                        </CompanyRoute>
 
 
                     </Switch>

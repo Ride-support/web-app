@@ -26,12 +26,11 @@ const ALL_SERVICES = gql`
 
 function GetAllServices(Vehicle_type) {
 
-    console.log()
+
     const { loading, error, data } = useQuery(ALL_SERVICES);
 
     if (loading) return <p>Loading...</p>;
     if (error) return <p>Error :(</p>;
-
 
 
     return data.allServicesM.map(({Idcompany,Service,Name,Location,Prices,Shedule}) => {
@@ -53,6 +52,28 @@ function GetAllServices(Vehicle_type) {
                                 </div>
                                 <div className="col-md-3 justify-content-end mt-5 pt-2 align">
                                     <ReservasComponent/>
+                                </div>
+
+                            </div>
+                            <hr className="text-danger"/>
+                        </div>
+                    </div>
+
+
+                );
+            }else if(Vehicle_type.Vehicle_type==null){ //company_index
+                return (
+                    <div className="col-md-12">
+
+                        <div className="col-md-12" key={Idcompany}>
+                            <div className="row">
+                                <div className="col-md-12 ">
+                                    <h3 className="text-danger">{Service}</h3>
+                                    <h4 className="text-info mr-2" style={styles.inline}>Empresa: </h4>
+                                    <h4 style={styles.inline}>{Name} </h4>
+                                    <h5>Localización: {Location}</h5>
+                                    <h5>Precio: {Prices}</h5>
+                                    <h5>Horario: {Shedule}</h5>
                                 </div>
 
                             </div>
