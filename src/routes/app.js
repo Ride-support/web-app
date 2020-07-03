@@ -12,6 +12,8 @@ import gql from 'graphql-tag';
 import client from "../apollo";
 import DriverIndexComponent from "../components/index/DriverIndexComponent";
 import CompanyIndexComponent from "../components/index/CompanyIndexComponent";
+import CompanyProfileComponent from "../components/profile/CompanyProfileComponent";
+import UserProfileComponent from "../components/profile/UserProfileComponent";
 
 const isAuthenticated = ()=>{
     const token = localStorage.getItem('token')
@@ -90,9 +92,6 @@ class App extends Component{
                             <CompanyRoute path="/firstService" >
                                 <SimpleNavbar/>
                             </CompanyRoute>
-                            <DriverRoute path="/firstVehicle">
-                                <SimpleNavbar/>
-                            </DriverRoute>
                             <DriverRoute path="/driver_index">
                                 <DriverNavbar/>
                             </DriverRoute>
@@ -122,6 +121,13 @@ class App extends Component{
                         </Route>
                         <CompanyRoute path="/company_index">
                             <CompanyIndexComponent/>
+                        </CompanyRoute>
+
+                        <DriverRoute path="/driver_profile">
+                            {<UserProfileComponent/>}
+                        </DriverRoute>
+                        <CompanyRoute path="/company_profile">
+                            {<CompanyProfileComponent/>}
                         </CompanyRoute>
 
 

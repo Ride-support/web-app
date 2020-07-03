@@ -56,7 +56,7 @@ class CompanyIndexComponent extends Component{
     reloadForm = () => {
         document.getElementById("form").reset();
         console.log(document.getElementById("selectForm").name);
-
+        alert("Servicio agregado correctamente");
     };
 
     handlerAddService = async  (ev,args)=>{

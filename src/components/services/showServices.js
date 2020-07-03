@@ -38,7 +38,7 @@ function GetAllServices(Vehicle_type) {
             if(Service.split(" ")[2] == Vehicle_type.Vehicle_type){
 
                 return (
-                    <div className="col-md-12">
+                    <div className="col-md-12" >
 
                         <div className="col-md-12" key={Idcompany}>
                             <div className="row">
@@ -104,7 +104,7 @@ class ShowServicesComponent extends Component{
         return(
             <div className="container">
                 <div className="row">
-                    <GetAllServices Vehicle_type={localStorage.getItem("vehicle_type")}/>
+                    <GetAllServices Vehicle_type={localStorage.getItem("vehicle_type")} />
                 </div>
 
             </div>

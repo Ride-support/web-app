@@ -47,7 +47,7 @@ export default () => {
                                 </Dropdown.Toggle>
 
                                 <Dropdown.Menu>
-                                    <Dropdown.Item href="#/action-1">
+                                    <Dropdown.Item href="/driver_profile">
                                         <div className="d-flex justify-content-end">
                                             <h5 style={styles.inline} >Editar perfil conductor</h5>
                                             <Icon style={styles.inline} name="edit"  size="large"/>

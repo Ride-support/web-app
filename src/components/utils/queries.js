@@ -111,7 +111,22 @@ export default{
       }
     }
     `,
-  
+        UPDATE_COMPANY : gql`
+        mutation UPDATE_COMPANY($id: Int!,$email: String!,$password: String!,$name: String!,$city: String!,$address: String!,$phone: Int!,$manager: String!){
+            updateCompany(id: $id, company: {
+                email: $email,
+                password: $password,
+                name: $name,
+                city: $city,
+                address: $address,
+                phone: $phone,
+                manager: $manager
+
+            }) {
+                id
+            }
+        }
+`,
 
     },
 

@@ -8,13 +8,51 @@ import{
 import { useQuery } from '@apollo/react-hooks';
 import queries from '../utils/queries';
 import mapStyle from './MapsStyle'
+import gql from "graphql-tag";
+import {func} from "prop-types";
+import Popup from "semantic-ui-react/dist/commonjs/modules/Popup";
+import Button from "react-bootstrap/Button";
 
-function ShowCoordinates() {
-    const { loading, error, data } = useQuery(queries.query.GET_ALL_COORDINATES);
-  
+const ALL_SERVICES = gql`
+    {
+        allServicesM{
+            Service
+
+        }
+    }
+`;
+
+function GetServices() {
+
+    const { loading, error, data } = useQuery(ALL_SERVICES);
     if (loading) return <p>Loading...</p>;
     if (error) return <p>Error :(</p>;
-  
+
+    const all_services = data.allServicesM.map( item => {
+        return { value: item.Service };
+    });
+
+    var array_all_services = [];
+    for(var i = 0; i < all_services.length; i++){
+        var vehicle_type_of_this_service = all_services[i].value.split(" ")[2];
+        if(vehicle_type_of_this_service==localStorage.getItem("vehicle_type")){
+            var service = all_services[i].value.split(" ")[0];
+            array_all_services.push(service);
+        }
+    }
+    return array_all_services
+}
+
+function ShowCoordinates() {
+
+    const dataServices = GetServices()
+
+    const { loading, error, data } = useQuery(queries.query.GET_ALL_COORDINATES);
+
+    if (loading) return <p>Loading...</p>;
+    if (error) return <p>Error :(</p>;
+
+    var counter = 0
     return data.allCoordinates.map(position => (
         <Marker
             key = {position._id}

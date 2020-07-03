@@ -271,11 +271,11 @@ export default ()=>{
                 <div className="col-md-4 px-0">
                     <h1 className="font-italic text-warning text-center mt-5">Busca un servicio...</h1>
                     <Card className="bg-light mx-3 mb-3 " style={styles.vehicleCard}>
-                        <div class="row text-center d-flex justify-content-center">
+                        <div className="row text-center d-flex justify-content-center">
                             <h1 className="text-info font-italic mt-3">Tus vehículos</h1>
                         </div>
 
-                        <div class="row text-center d-flex justify-content-center" >
+                        <div className="row text-center d-flex justify-content-center" >
                             {showVehicle()}
                         </div>
 

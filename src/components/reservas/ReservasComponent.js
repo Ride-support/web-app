@@ -53,7 +53,7 @@ class ReservasComponent extends Component {
         
         return(
             <div >
-				<Button outline onClick={this.toggleModal}><span>Reservas</span></Button>
+				<Button outline onClick={this.toggleModal}><span>Reservar</span></Button>
 				<Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal} >
 					<ModalHeader toggle={this.toggleModal}>Reservar servicio</ModalHeader>
 					<ModalBody>
