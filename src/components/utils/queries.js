@@ -127,8 +127,25 @@ export default{
             }
         }
 `,
-
+        UPDATE_DRIVER : gql`
+            mutation UPDATE_DRIVER($id: Int!,$email: String!,$password: String!,$name: String!,$lastname: String!,$age: Int!,$address: String!,$phone: Int!,$vehicle: String!){
+                    updateDriver(id: $id, driver: {
+                        email:$email
+                        password:$password
+                        name:$name
+                        lastname:$lastname
+                        age:$age
+                        address:$address
+                        phone:$phone
+                        vehicle:$vehicle
+                    
+                      }) {
+                        id
+                      }
+                    }
+        `,
     },
+
 
 
 }
