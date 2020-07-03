@@ -48,8 +48,8 @@ class UserProfileComponent extends Component{
             variables:args
         })
 
-        localStorage.setItem("vehicle_type",args["vehicle_type"]);
-        localStorage.setItem("name",args["name"]+args["lastname"]);
+        localStorage.setItem("vehicle_type",args["vehicle"]);
+        localStorage.setItem("name",args["name"]+" "+args["lastname"]);
         alert("¡Driver actualizado!");
     };
 

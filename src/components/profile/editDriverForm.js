@@ -118,7 +118,7 @@ export default ({handleSubmit}) =>{
                             <div className="col-md-12">
                                 <div className="form-group">
                                     <label className="font-weight-bold" htmlFor="selectID">Vehicle Type</label>
-                                    <select className="form-control" id="selectID" onChange={handleChangeSelect} placeholder="Select your vehicle type" >
+                                    <select className="form-control" id="selectID" onChange={handleChangeSelect} placeholder="Select your vehicle type" defaultValue={args["vehicle"]}>
                                         <option value="" disabled>Select your vehicle type</option>
                                         <option>Carro</option>
                                         <option>Moto</option>
